@@ -1,1 +1,1 @@
-web: gunicorn ediarista_python.wsgi --log-file -
+web: gunicorn "ediarista_python.wsgi"

@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'herokuapp'
+    # 'herokuapp',
     'easy_mask',
     'web',
 

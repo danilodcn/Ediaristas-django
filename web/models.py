@@ -13,5 +13,6 @@ class Diarista(models.Model):
     complemento = models.CharField(max_length=100, blank=True, null=False)
     cep = models.CharField(max_length=8, blank=False, null=False)
     estado = models.CharField(max_length=2, blank=False, null=False)
+    cidade = models.CharField(max_length=30, null=False, blank=False)
     codigo_ibge = models.IntegerField(blank=False, null=False)
     foto_usuario = models.ImageField(null=False)

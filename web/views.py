@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms.diarista_form import DiaristaForm
 from .models import Diarista
 
-# Create your views here.
+# Create your templates here.
 def cadastrar_diarista(request):
     if request.method == 'POST':
         diarista_form = DiaristaForm(request.POST, request.FILES)

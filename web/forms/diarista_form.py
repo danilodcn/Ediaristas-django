@@ -12,7 +12,7 @@ class DiaristaForm(forms.ModelForm):
     class Meta:
         model = Diarista
         # fields = "__all__"
-        exclude = ("codigo_ibge",)
+        exclude = ("codigo_ibge", "estado", "cidade")
 
     def clean_cpf(self):
         cpf = self.cleaned_data["cpf"]
@@ -34,15 +34,21 @@ class DiaristaForm(forms.ModelForm):
         if "erro" in response_json:
             raise forms.ValidationError("O CEP informado não foi encontrado")
 
-        estado: str = self.data.get("estado")
-        # import ipdb; ipdb.set_trace()
-        if estado.upper() != response_json["uf"].upper():
-            raise forms.ValidationError(f"Esse CEP não pertence ao estado {estado}")
+        # # estado: str = self.data.get("estado")
+        # # import ipdb; ipdb.set_trace()
+        # if estado.upper() != response_json["uf"].upper():
+        #     raise forms.ValidationError(f"Esse CEP não pertence ao estado {estado}")
+
         self.__codigo_ibge = response_json["ibge"]
+        self.__estado = response_json["uf"]
+        self.__cidade = response_json["localidade"]
         return cep
 
     def save(self, commit=False):
         instance = super(DiaristaForm, self).save(commit=False)
         instance.codigo_ibge = self.__codigo_ibge
+        instance.cidade = self.__cidade
+        instance.estado = self.__estado
+
         instance.save()
         return instance

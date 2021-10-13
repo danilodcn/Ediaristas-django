@@ -3,6 +3,11 @@ from .forms.diarista_form import DiaristaForm
 from .models import Diarista
 
 # Create your templates here.
+
+def home_web(requests):
+    return redirect("listar_diaristas")
+
+
 def cadastrar_diarista(request):
     if request.method == 'POST':
         diarista_form = DiaristaForm(request.POST, request.FILES)

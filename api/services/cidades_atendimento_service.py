@@ -16,6 +16,8 @@ def bucar_cidade_cep(cep):
 def listar_diaristas_cidade(cep: str):
     cidade_api = bucar_cidade_cep(cep)
     codigo_ibge = cidade_api["ibge"]
-
-    diaristas = Diarista.objects.filter(codigo_ibge=codigo_ibge).order_by("id")
-    return diaristas
+    try:
+        diaristas = Diarista.objects.filter(codigo_ibge=codigo_ibge).order_by("id")
+        return diaristas
+    except Diarista.DoesNotExist:
+        return []

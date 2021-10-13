@@ -8,6 +8,7 @@ class DiaristaForm(forms.ModelForm):
     cep = forms.CharField(widget=forms.TextInput(attrs={'data-mask': '00000-000'}))
     telefone = forms.CharField(widget=forms.TextInput(attrs={'data-mask': '(00) 00000-0000'}))
     # codigo_ibge = forms.IntegerField(required=False)
+    foto_usuario = forms.ImageField(required=False)
 
     class Meta:
         model = Diarista

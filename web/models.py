@@ -16,3 +16,4 @@ class Diarista(models.Model):
     cidade = models.CharField(max_length=30, null=False, blank=False)
     codigo_ibge = models.IntegerField(blank=False, null=False)
     foto_usuario = models.ImageField(null=False)
+
